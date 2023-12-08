@@ -34,20 +34,19 @@ void initState(){
           children: [
              Center(
                child: SizedBox(
-                width: 300.0,
+                width: 400.0,
                 child: TextLiquidFill(
-                  
                   loadDuration: Duration(seconds: 2),
                   waveDuration: Duration(seconds: 1),
                   text: 'TGVPN',
                   waveColor: kDefColor2,
                   boxBackgroundColor: kDefBackground,
                   textStyle: TextStyle(
-                    fontSize: 70.0,
+                    fontSize: 80.0,
                     fontWeight: tbold,
                     fontFamily: kDefFont,
                  ),
-                boxHeight: 300.0,
+                boxHeight: 100.0,
                        ),
              ),
              )

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vpn/kDefaultSet.dart';
 import 'package:go_router/go_router.dart';
@@ -14,9 +15,17 @@ class SideNavigationList extends StatefulWidget {
 }
 
 class _SideNavigationListState extends State<SideNavigationList> {
+  final user = FirebaseAuth.instance.currentUser;
+
+  Future<void> signOut() async {
+    context.push('/signin');
+    await FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final user = FirebaseAuth.instance.currentUser;
     return Container(
       padding: EdgeInsets.only(top: 30),
       child: Column(
@@ -47,21 +56,25 @@ class _SideNavigationListState extends State<SideNavigationList> {
             leading: Icon(Icons.info, color: kDefColorIcon,),
             title: Text('О нас',style: TextStyle(color: kDefColorText, fontSize: kdefFontSizeMedium, fontWeight: tregular),),
             onTap: () {
-             
+              context.push('/bio');
             },
           ),
+          
+          (user == null)
+          ?
+          ListTile(
+            leading: Icon(Icons.update, color: kDefColorIcon,),
+            title: Text('Регистрация/Войти',style: TextStyle(color: kDefColorText, fontSize: kdefFontSizeMedium, fontWeight: tregular),),
+            onTap: () {
+             context.push('/signin');
+            },
+          )
+          :
           ListTile(
             leading: Icon(Icons.exit_to_app, color: kDefColorIcon,),
             title: Text('Выйти',style: TextStyle(color: kDefColorText, fontSize: kdefFontSizeMedium, fontWeight: tregular),),
             onTap: () {
-             
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.update, color: kDefColorIcon,),
-            title: Text('Регистрация',style: TextStyle(color: kDefColorText, fontSize: kdefFontSizeMedium, fontWeight: tregular),),
-            onTap: () {
-             context.push('/signin');
+              signOut();
             },
           ),
         ],

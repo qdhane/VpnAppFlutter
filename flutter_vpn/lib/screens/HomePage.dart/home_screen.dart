@@ -25,23 +25,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDefBackground,
-      drawer: Drawer(
-            backgroundColor: Color.fromARGB(146, 0, 0, 0),
-            shadowColor: Colors.black,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(40),
-                    topRight: Radius.circular(40))),
-            child: SingleChildScrollView(
-              child: BlurryContainer(
-                blur: 10,
-                child: Column(children: const [
-                  SideNavigationHeader(),
-                  SideNavigationList()
-                ]),
-              ),
-            )
-          ),
+      drawer: const Drawer(
+          backgroundColor: Color.fromARGB(146, 0, 0, 0),
+          shadowColor: Colors.black,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(40),
+                  topRight: Radius.circular(40))),
+          child: SingleChildScrollView(
+            child: BlurryContainer(
+              blur: 10,
+              child: Column(
+                  children: [SideNavigationHeader(), SideNavigationList()]),
+            ),
+          )),
       body: SafeArea(
         child: Column(
           children: [
@@ -54,19 +51,18 @@ class _HomePageState extends State<HomePage> {
                   child: Builder(
                     builder: (context) {
                       return IconButton(
-                      onPressed: (){
-                        Scaffold.of(context).openDrawer();
-                      },
-                      icon: Icon(
-                        Icons.menu,
-                        color: kDefColorIcon,
-                        size: kdefIconSize,
-                      ),
-                    );
+                        onPressed: () {
+                          Scaffold.of(context).openDrawer();
+                        },
+                        icon: Icon(
+                          Icons.menu,
+                          color: kDefColorIcon,
+                          size: kdefIconSize,
+                        ),
+                      );
                     },
                   ),
                 ),
-                
                 Text(
                   'TGVPN',
                   style: TextStyle(
@@ -79,11 +75,11 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: EdgeInsets.only(right: kdefPadding),
                   child: IconButton(
-                    onPressed: (){
+                    onPressed: () {
                       context.go('/servers');
                     },
                     icon: Icon(
-                        SimpleIcons.serverfault,
+                      SimpleIcons.serverfault,
                       color: kDefColorIcon,
                       size: kdefIconSize,
                     ),
@@ -92,293 +88,285 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
 
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             // ? ПРОГРЕСС БАР
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 30),
-                        child: Text(
-                          'Бесплатно',
-                          style: TextStyle(
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 30),
+                      child: Text(
+                        'Бесплатно',
+                        style: TextStyle(
                             fontSize: kdefFontSizeSmall,
                             color: kDefColorText,
                             fontWeight: tregular,
-                            fontFamily: kDefFont
-                          ),
-                        ),
+                            fontFamily: kDefFont),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 30),
-                        child: Text(
-                          '0/500МБ',
-                          style: TextStyle(
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 30),
+                      child: Text(
+                        '0/500МБ',
+                        style: TextStyle(
                             fontSize: kdefFontSizeSmall,
                             color: kDefColorText,
                             fontWeight: tregular,
-                            fontFamily: kDefFont
-                          ),
-                        ),
+                            fontFamily: kDefFont),
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: kdefPadding, right: kdefPadding),
-                        child: LinearPercentIndicator(
-                          width: 390,
-                          lineHeight: 8.0,
-                          percent: 0.5,
-                          
-                          barRadius:Radius.circular(30),
-                          linearGradient: LinearGradient(
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: kdefPadding, right: kdefPadding),
+                      child: LinearPercentIndicator(
+                        width: 390,
+                        lineHeight: 8.0,
+                        percent: 0.5,
+                        barRadius: Radius.circular(30),
+                        linearGradient: LinearGradient(
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
-                            colors: [
-                              kDefColorText,
-                              kDefColor2
-                            ]
-                          ),
-                        ),
+                            colors: [kDefColor2, kDefColor1]),
                       ),
-                    ],
-                  )
-                ],
-              ),
-              SizedBox(height: 35,),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Выбрать сервер', 
-                        style: TextStyle(
+                    ),
+                  ],
+                )
+              ],
+            ),
+            SizedBox(
+              height: 35,
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Выбрать сервер',
+                      style: TextStyle(
                           color: kDefColorText,
                           fontSize: kdefFontSizeMedium,
                           fontWeight: tbold,
-                          fontFamily: kDefFont
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 15,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                       SizedBox(
+                          fontFamily: kDefFont),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
                         height: 60,
                         width: 180,
-                        child:
-                        Container(
+                        child: Container(
                           decoration: BoxDecoration(
-                            color: kDefColorBtn,
-                            borderRadius: BorderRadius.circular(20)
-                          ),
+                              color: kDefColorBtn,
+                              borderRadius: BorderRadius.circular(20)),
                           child: TextButton(
-                            onPressed: (){
-                             context.push('/servers');
+                            onPressed: () {
+                              context.push('/servers');
                             },
                             child: Text(
                               'Франция',
                               style: TextStyle(
-                                fontFamily: kDefFont,
-                                color: kDefColorText2,
-                                fontSize: kdefFontSizeMedium,
-                                fontWeight: tregular
-                              ),
-        
-                              ),
+                                  fontFamily: kDefFont,
+                                  color: kDefColorText2,
+                                  fontSize: kdefFontSizeMedium,
+                                  fontWeight: tregular),
+                            ),
                           ),
-                        )
-                      )
-                    ],
-                  )
-                ],
-              ),
-              SizedBox(height: 70,),
-              // ? КНОПОЧКА
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                   Container(
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
+                        ))
+                  ],
+                )
+              ],
+            ),
+            SizedBox(
+              height: 70,
+            ),
+            // ? КНОПОЧКА
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.center,
-                          colors: [
-                            kDefColor1,
-                            kDefColor2
-                          ]
-                        ),
-                        shape: BoxShape.circle
-                      ),
-                        child: Container(
-                          padding: EdgeInsets.all(30),
-                          height: 250,
-                          width: 250,
-                          decoration: BoxDecoration(
-                            color: kDefBackground,
-                            shape: BoxShape.circle
-                          ),
-                          child: Container(
-                      padding: EdgeInsets.all(10),
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.center,
+                            colors: [kDefColor1, kDefColor2]),
+                        shape: BoxShape.circle),
+                    child: Container(
+                      padding: EdgeInsets.all(30),
+                      height: 250,
+                      width: 250,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            kDefColor2,
-                            kDefColor1
-                          ]
-                        ),
-                        shape: BoxShape.circle
-                      ),
+                          color: kDefBackground, shape: BoxShape.circle),
                       child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [kDefColor2, kDefColor1]),
+                            shape: BoxShape.circle),
+                        child: Container(
                           height: 200,
                           width: 200,
                           decoration: BoxDecoration(
-                            color: kDefBackground,
-                            shape: BoxShape.circle
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                   SizedBox.fromSize(
-                                    size: Size(100,100),
-                                  child: ClipOval(
-                                    child: Material(
-                                      color: Color.fromARGB(0, 0, 0, 0),
-                                      child: InkWell(
-                                        onTap: () {}, 
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Icon(Icons.power_settings_new, size: kdefIconSizeBig,color: kDefColorIcon,), // <-- Icon
-                                            Text("OFF", style: TextStyle(fontFamily: kDefFont, fontSize: kdefFontSizeSmall, color: kDefColorText, ),), // <-- Text
-                                          ],
-                                        ),
+                              color: kDefBackground, shape: BoxShape.circle),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox.fromSize(
+                                size: Size(100, 100),
+                                child: ClipOval(
+                                  child: Material(
+                                    color: Color.fromARGB(0, 0, 0, 0),
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.power_settings_new,
+                                            size: kdefIconSizeBig,
+                                            color: kDefColorIcon,
+                                          ), // <-- Icon
+                                          Text(
+                                            "OFF",
+                                            style: TextStyle(
+                                              fontFamily: kDefFont,
+                                              fontSize: kdefFontSizeSmall,
+                                              color: kDefColorText,
+                                            ),
+                                          ), // <-- Text
+                                        ],
                                       ),
                                     ),
                                   ),
-                                )
-                              ],
-                            ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                      )
-                    )
-                  
-                ],
-              ),
+                      ),
+                    ))
+              ],
+            ),
 
-                SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
 
-              // ? INFOBAR
-              // SizedBox(
-              //   height: 150,
-              //   width: 390,
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       color: Color.fromARGB(136, 0, 0, 0),
-              //       borderRadius: BorderRadius.circular(50)
-              //     ),
-              //     child: Column(
-              //       children: [
-              //         SizedBox(height: 10,),
-              //         Row(
-              //           mainAxisAlignment: MainAxisAlignment.center,
-              //           children: [
-              //             Text(
-              //               'IP:212.35.160.41',
-              //               style: TextStyle(
-              //                 fontFamily: kDefFont,
-              //                 fontSize: kdefFontSizeMedium,
-              //                 color: kDefColorText,
-              //                 fontWeight: tregular
-              //               ),
-              //             ),
-              //           ],  
-              //         ),
-              //          SizedBox(height: 15,),
-              //         Padding(
-              //           padding:  EdgeInsets.only(left: 45, right: 55),
-              //           child: Row(
-              //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //                 children: [
-              //                   Column(
-              //                     children: [
-              //                       Row(
-              //                         children: [
-              //                           Text(
-              //                             'Прием',
-              //                             style: TextStyle(
-              //                               color: kDefColorText,
-              //                               fontFamily: kDefFont,
-              //                               fontSize: kdefFontSizeMedium,
-              //                               fontWeight: tbold
-              //                             ),
-              //                           )
-              //                         ],
-              //                       ),
-                                      
-              //                       Row(
-              //                         children: [
-              //                           Text(
-              //                             '500 КБ',
-              //                             style: TextStyle(
-              //                               color: kDefColorText,
-              //                               fontFamily: kDefFont,
-              //                               fontSize: kdefFontSizeMedium,
-              //                               fontWeight: tregular
-              //                             ),
-              //                           )
-              //                         ],
-              //                       )
-              //                     ],
-              //                   ),
-              //                   Column(
-              //                     children: [
-              //                       Row(
-              //                         children: [
-              //                           Text(
-              //                             'Отдача',
-              //                             style: TextStyle(
-              //                               color: kDefColorText,
-              //                               fontFamily: kDefFont,
-              //                               fontSize: kdefFontSizeMedium,
-              //                               fontWeight: tbold
-              //                             ),
-              //                           )
-              //                         ],
-              //                       ),
-              //                       Row(
-              //                         children: [
-              //                           Text(
-              //                             '600 КБ',
-              //                             style: TextStyle(
-              //                               color: kDefColorText,
-              //                               fontFamily: kDefFont,
-              //                               fontSize: kdefFontSizeMedium,
-              //                               fontWeight: tregular
-              //                             ),
-              //                           )
-              //                         ],
-              //                       )
-              //                     ],
-              //                   ),
-              //                 ],
-              //               ),
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // )
+            // ? INFOBAR
+            // SizedBox(
+            //   height: 150,
+            //   width: 390,
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       color: Color.fromARGB(136, 0, 0, 0),
+            //       borderRadius: BorderRadius.circular(50)
+            //     ),
+            //     child: Column(
+            //       children: [
+            //         SizedBox(height: 10,),
+            //         Row(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             Text(
+            //               'IP:212.35.160.41',
+            //               style: TextStyle(
+            //                 fontFamily: kDefFont,
+            //                 fontSize: kdefFontSizeMedium,
+            //                 color: kDefColorText,
+            //                 fontWeight: tregular
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //          SizedBox(height: 15,),
+            //         Padding(
+            //           padding:  EdgeInsets.only(left: 45, right: 55),
+            //           child: Row(
+            //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //                 children: [
+            //                   Column(
+            //                     children: [
+            //                       Row(
+            //                         children: [
+            //                           Text(
+            //                             'Прием',
+            //                             style: TextStyle(
+            //                               color: kDefColorText,
+            //                               fontFamily: kDefFont,
+            //                               fontSize: kdefFontSizeMedium,
+            //                               fontWeight: tbold
+            //                             ),
+            //                           )
+            //                         ],
+            //                       ),
 
-
+            //                       Row(
+            //                         children: [
+            //                           Text(
+            //                             '500 КБ',
+            //                             style: TextStyle(
+            //                               color: kDefColorText,
+            //                               fontFamily: kDefFont,
+            //                               fontSize: kdefFontSizeMedium,
+            //                               fontWeight: tregular
+            //                             ),
+            //                           )
+            //                         ],
+            //                       )
+            //                     ],
+            //                   ),
+            //                   Column(
+            //                     children: [
+            //                       Row(
+            //                         children: [
+            //                           Text(
+            //                             'Отдача',
+            //                             style: TextStyle(
+            //                               color: kDefColorText,
+            //                               fontFamily: kDefFont,
+            //                               fontSize: kdefFontSizeMedium,
+            //                               fontWeight: tbold
+            //                             ),
+            //                           )
+            //                         ],
+            //                       ),
+            //                       Row(
+            //                         children: [
+            //                           Text(
+            //                             '600 КБ',
+            //                             style: TextStyle(
+            //                               color: kDefColorText,
+            //                               fontFamily: kDefFont,
+            //                               fontSize: kdefFontSizeMedium,
+            //                               fontWeight: tregular
+            //                             ),
+            //                           )
+            //                         ],
+            //                       )
+            //                     ],
+            //                   ),
+            //                 ],
+            //               ),
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),

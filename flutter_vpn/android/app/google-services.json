@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998828132451",
+    "project_id": "tgvpn-6fce4",
+    "storage_bucket": "tgvpn-6fce4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998828132451:android:cdb0c29b09957cefee1056",
+        "android_client_info": {
+          "package_name": "com.example.flutter_vpn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJegsNhOMBGBvErucL9OFogbi8JuGXlZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
