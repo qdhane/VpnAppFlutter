@@ -13,16 +13,15 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
-void initState(){
-  super.initState();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-  Future.delayed(Duration(seconds: 2),(){
-   context.go('/home');
-  });
-}
+    Future.delayed(Duration(seconds: 2), () {
+      context.go('/home');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +31,19 @@ void initState(){
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             Center(
-               child: SizedBox(
-                width: 400.0,
-                child: TextLiquidFill(
-                  loadDuration: Duration(seconds: 2),
-                  waveDuration: Duration(seconds: 1),
-                  text: 'TGVPN',
-                  waveColor: kDefColor2,
-                  boxBackgroundColor: kDefBackground,
-                  textStyle: TextStyle(
-                    fontSize: 80.0,
-                    fontWeight: tbold,
-                    fontFamily: kDefFont,
-                 ),
-                boxHeight: 100.0,
-                       ),
-             ),
-             )
+            Center(
+                child: DefaultTextStyle(
+                    style: TextStyle(
+                      fontSize: 100.0,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.bold,
+                      color: kDefColorText
+                    ),
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        ScaleAnimatedText('TGVPN', scalingFactor: 0.8),
+                      ],
+                    )))
           ],
         ),
       ),
